@@ -1,0 +1,99 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+    <title>BASICFILTER</title>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+        integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+</head>
+
+<body>
+    <div class="container">
+        <table class="table table-bordered">
+            <tr>
+                <td></td>
+                <td></td>
+                <td class="not"></td>
+                <td>TOM CRUISE</td>
+                <td></td>
+            </tr>
+            <tr>
+                <td></td>
+                <td></td>
+                <td class="not"></td>
+                <td></td>
+                <td></td>
+            </tr>
+            <tr>
+                <td></td>
+                <td></td>
+                <td class="not"></td>
+                <td></td>
+                <td></td>
+            </tr>
+            <tr>
+                <td></td>
+                <td></td>
+                <td class="not"></td>
+                <td></td>
+                <td>TOM HOLLAND</td>
+            </tr>
+            <tr>
+                <td></td>
+                <td></td>
+                <td><p>I HAVE P</p></td>
+                <td></td>
+                <td>TOM HARDY</td>
+            </tr>
+        </table>
+        <div class="py-2">
+            <h1>H1 TITLE</h1>
+            <h2>H2 TITLE</h2>
+        </div>
+    </div>
+
+    <!-- Optional JavaScript -->
+    <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
+        integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
+        crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"
+        integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1"
+        crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"
+        integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM"
+        crossorigin="anonymous"></script>
+    <script>
+        //INDEX-2個被選到
+        // $("td:eq(2)").css("background", "yellow")
+        // //INDEX-ODD偶數被選到
+        // $("td:even").css("background", "red")
+        // $("td:odd").css("background", "green")
+
+        // $("td:first").css("background", "gold")
+        // $("td:last").css("background", "yellow")
+
+        // // :gt() 大於的都改變
+        // // :lt() 小於的都改變
+        // $("td:gt(3)").css("background", "pink")
+        // $("td:lt(11)").css("background", "lightblue")
+        
+        // // 對於所有的改變
+        // $(":header").css("color","red")
+
+        // :not()不選取標籤的做改變
+        // $("td:not(.not)").css("background", "lightblue")
+        
+        //:contains()內容包含的
+        $("td:contains('TOM')").css("background", "pink")
+        $("td:empty").css("background", "red")
+        $("td:has(p)").css("background","pink")
+    </script>
+</body>
+
+</html>
