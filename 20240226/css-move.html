@@ -1,38 +1,96 @@
 <!DOCTYPE html>
 <html lang="">
+
 <head>
     <meta charset="UTF-8">
     <title>CSS move</title>
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
-          integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
-    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.2/css/all.css" integrity="sha384-fnmOCqbTlWIlj8LyTjo7mOUStjsKC4pOpQbqyi7RrhN7udi9RwhKkMHpvLbHG9Sr" crossorigin="anonymous">
+        integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.2/css/all.css"
+        integrity="sha384-fnmOCqbTlWIlj8LyTjo7mOUStjsKC4pOpQbqyi7RrhN7udi9RwhKkMHpvLbHG9Sr" crossorigin="anonymous">
     <style>
-        .wrapper{
-            width:800px;
+        .wrapper {
+            width: 800px;
             height: 400px;
             background: #eee;
         }
-        .box{
+
+        .box {
             width: 120px;
             height: 120px;
             background: lightblue;
+            transition: .3s;
+            /* 沒有預設值的話，他會閃一下 */
+            left: 0;
+            top: 0;
+
         }
     </style>
 </head>
+
 <body>
-<div class="wrapper position-relative mx-auto">
-    <div class="box position-absolute"></div>
-</div>
-<div class="py-3 text-center">
-    <div class="py-1"><button class="btn btn-info"><i class="fas fa-caret-up"></i></button></div>
-    <div><button class="btn btn-info mx-1"><i class="fas fa-caret-left"></i></button><button class="btn btn-info mx-1"><i class="fas fa-caret-right"></i></button></div>
-    <div class="py-1"><button class="btn btn-info"><i class="fas fa-caret-down"></i></button></div>
-</div>
+    <div class="wrapper position-relative mx-auto">
+        <div class="box position-absolute" id="box"></div>
+    </div>
+    <div class="py-3 text-center">
+        <div class="py-1">
+            <!-- 增加data-direction="up" 的屬性 -->
+            <button class="btn btn-info btn-move" data-direction="up" id="up">
+                <i class="fas fa-caret-up"></i></button>
+        </div>
+        <div>
+            <button class="btn btn-info mx-1 btn-move" id="left" data-direction="left"><i class="fas fa-caret-left">
+                </i></button>
+            <button class="btn btn-info mx-1 btn-move" data-direction="right" id="right"><i
+                    class="fas fa-caret-right"></i></button>
+        </div>
+        <div class="py-1"><button class="btn btn-info btn-move" data-direction="down" id="down"><i
+                    class="fas fa-caret-down"></i></button></div>
+    </div>
 
-<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
-<script>
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
+        integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
+        crossorigin="anonymous"></script>
+    <script>
+        let speed = 6
+        let color = ["red", "orange", "green", "blue","purple"]
+        let colorCount=color.length
+        let colorIndex=0
+        // $("#up").on("click", function () {
+        //     $("#box").css("top","-="+speed)
+        // })
+        // $("#down").on("click", function () {
+        //     $("#box").css("top","+="+speed)
+        // })
+
+        $(".btn-move").click(function () {
+            let direction = $(this).data("direction")
+            // console.log(direction);
 
 
-</script>
+            switch (direction) {
+                case "up":
+                    $("#box").css("top", "-=" + speed).css("background", color[colorIndex])
+                    break;
+                case "down":
+                    $("#box").css("top", "+=" + speed).css("background", color[colorIndex])
+                    break;
+                case "left":
+                    $("#box").css("left", "-=" + speed).css("background",color[colorIndex])
+                    break;
+                case "right":
+                    $("#box").css("left", "+=" + speed).css("background", color[colorIndex])
+                    break;
+            }
+            colorIndex++;
+            // 餘數為0的話，就歸零
+            colorIndex=colorIndex%colorCount
+            // if(colorIndex==color.length)colorIndex=0
+        })
+
+
+
+    </script>
 </body>
+
 </html>
