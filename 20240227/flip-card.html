@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="">
+<head>
+  <meta charset="UTF-8">
+  <title>Ex6</title>
+</head>
+<style>
+body{
+  margin:50px;
+}
+.container{
+  /* perspective:1000px; */
+}
+.box img{
+  width:300px;
+}
+.card{
+  position: relative;
+  transform-style:preserve-3d;
+  float:left;
+  margin: 0 20px 20px;
+  width:200px;
+  height:280px; 
+  perspective:1000px;
+  /*height:400px;*/
+}
+.card.active{
+  transform: rotateY(180deg);
+  -webkit-transform: rotateY(180deg);
+}
+.card_wrap{
+    transform-style:preserve-3d;
+}
+.card img{
+  width:100%;
+  position: absolute;
+  left:0;
+  top:0;
+  display: block;
+  -webkit-backface-visibility: hidden;  
+  backface-visibility: hidden;
+  border-radius: 10px;
+  overflow: hidden;
+}
+.front{
+  transform: rotateY(180deg);
+  -webkit-transform: rotateY(180deg);
+}
+.back{
+  display: none;
+}
+.transition{
+  transition: all .5s;
+  -webkit-transition: all .5s;
+}
+.box:hover{
+  transform:rotateY(180deg);
+  -webkit-transform:rotateY(180deg);
+}
+</style>
+<body>
+  <div class="container">
+    <div class="card transition">
+      <div class="card_wrap">
+        <img class="back" src="/example/images/card.jpg">
+        <img class="front" src="/example/images/dr_strange.jpg" alt="">
+      </div>
+    </div>
+    <div class="card transition">
+      <div class="card_wrap">
+        <img class="back" src="/example/images/card.jpg">
+        <img class="front" src="/example/images/dr_fate.jpg" alt="">
+      </div>
+    </div>
+    <div class="card transition">
+      <div class="card_wrap">
+        <img class="back" src="/example/images/card.jpg">
+        <img class="front" src="/example/images/dr_fate.jpg" alt="">
+      </div>
+    </div>
+    <div class="card transition">
+      <div class="card_wrap">
+        <img class="back" src="/example/images/card.jpg">
+        <img class="front" src="/example/images/dr_strange.jpg" alt="">
+      </div>
+    </div>
+  </div>
+  <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+  <script>
+    // let limit=0;
+    // $(".card").click(function(){
+    //     $(this).toggleClass("active")
+    //     limit++
+    //     if(limit==2){
+    //         $(".card").off("click")
+    //     }
+    // })
+
+    $(".card").click(function(){
+        let openedCard=$(".card.active").length;
+        console.log(openedCard);
+        
+        if(openedCard===2){
+            $(this).removeClass("active")
+            return;
+        }
+        $(this).toggleClass("active")
+        
+    })
+  </script>
+</body>
+</html>
