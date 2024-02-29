@@ -1,0 +1,66 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <title>attr</title>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+  </head>
+  <body>
+      <div class="container">
+        <div class="py-2">
+            <button type="button" class="btn btn-primary" id="getLink">GET LINK</button>
+            <button type="button" class="btn btn-primary" id="setLink">SET LINK</button>
+
+        </div>
+        <a id="link" title="google" href="https://www.google.com">GOOGLE</a>
+        <hr>
+        <div class="py-2">
+            <button type="button" class="btn btn-primary" id="getPic">GET PIC</button>
+            <button type="button" class="btn btn-primary" id="setPic">SET PIC</button>
+        </div>
+        <img id="target" src="/example/images/01.png" alt="">
+      </div>
+    <!-- Optional JavaScript -->
+    <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
+    <script>
+        $("#getLink").click(function(){
+            //elem.attr
+            let link=$("#link").attr("href")
+            let title=$("#link").attr("title")
+            console.log(link,title);
+        })
+
+        $("#setLink").click(function(){
+            // $("#link").attr("href","https://www.facebook.com").attr("title","facebook").html("facebook")
+
+            //利用物件帶進去
+            let newAttr={
+                "href":"https://www.facebook.com",
+                "title":"facebook"
+            }
+            $("#link").attr(newAttr).html("facebook")
+        })
+
+        $("#getPic").click(function(){
+            //elem.attr
+            let imgUrl=$("#target").attr("src")
+            
+            console.log(imgUrl);
+        })
+
+        $("#setPic").click(function(){
+            //elem.attr
+            $("#target").attr("src","/example/images/02.png")
+            
+            
+        })
+    </script>
+  </body>
+</html>
