@@ -1,0 +1,127 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+    <title>DOM</title>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+        integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+</head>
+
+<body>
+    <div class="container">
+        <table class="table table-bordered">
+            <tr id="source">
+                <td>a</td>
+                <td>Sam</td>
+                <td>sam@test.com</td>
+                <td>0966333333</td>
+            </tr>
+        </table>
+        <div class="py-2">
+            <button type="button" class="btn btn-primary" id="append">APPEND</button>
+            <button type="button" class="btn btn-primary" id="prepend">PREPPEND</button>
+            <button type="button" class="btn btn-primary" id="appendTo">APPEND TO</button>
+            <button type="button" class="btn btn-primary" id="prependTo">PREPEND TO</button>
+        </div>
+        <table class="table table-bordered">
+            <thead>
+                <tr>
+                    <th>NO.</th>
+                    <th>NAME</th>
+                    <th>EMAIL</th>
+                    <th>PHONE</th>
+                </tr>
+            </thead>
+            <tbody id="list">
+                <tr>
+                    <td>0</td>
+                    <td>Jack</td>
+                    <td>jack@test.com</td>
+                    <td>09545745643</td>
+                </tr>
+            </tbody>
+        </table>
+        <hr>
+        <h2>BEFORE AFTER</h2>
+        <div class="py-2">
+            <button type="button" class="btn btn-primary" id="before">BEFORE</button>
+            <button type="button" class="btn btn-primary" id="after">AFTER</button>
+            <button type="button" class="btn btn-primary" id="empty">EMPTY</button>
+            <button type="button" class="btn btn-primary" id="remove">REMOVE</button>
+        </div>
+        <ul>
+            <li id="item">item 0</li>
+        </ul>
+    </div>
+
+    <!-- Optional JavaScript -->
+    <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
+        integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
+        crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"
+        integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1"
+        crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"
+        integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM"
+        crossorigin="anonymous"></script>
+    <script>
+        let num = 1
+
+        $("#append").click(function () {
+            let content = `<tr>
+                    <td>${num}</td>
+                    <td>Sue</td>
+                    <td>sue@test.com</td>
+                    <td>0954525643</td>
+                </tr>`
+            $("#list").append(content)
+            num++
+        })
+        $("#prepend").click(function () {
+            let content = `<tr>
+                    <td>${num}</td>
+                    <td>Tom</td>
+                    <td>tom@test.com</td>
+                    <td>0951225643</td>
+                </tr>`
+            $("#list").prepend(content)
+            num++
+        })
+
+        $("#appendTo").click(function () {
+            $("#source").appendTo("#list")
+
+        })
+
+        $("#prependTo").click(function () {
+            $("#source").prependTo("#list")
+
+        })
+
+        $("#before").click(function () {
+            $("#item").before(`<li>before</li>`)
+        })
+
+        $("#after").click(function () {
+            $("#item").after(`<li>after</li>`)
+        })
+        // 清空
+        $("#empty").click(function () {
+            $("#list").empty()
+        })
+        // 移除
+        $("#remove").click(function () {
+            $("#list").remove()
+        })
+
+
+    </script>
+</body>
+
+</html>

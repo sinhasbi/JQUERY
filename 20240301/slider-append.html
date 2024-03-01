@@ -1,0 +1,283 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+    <title>SLIDER</title>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+        integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <!-- FONTAWESOME -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css"
+        integrity="sha512-DTOQO9RWCH3ppGqcWaEA1BIZOC6xxalwEsw9c2QQeAIftl+Vegovlnee1c9QX4TctnWMn13TZye+giMm8e2LwA=="
+        crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <style>
+        :root {
+            --transition-time: .4s
+        }
+
+        .wrapper {
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        .slider {
+            height: 400px;
+            background: #000;
+            overflow: hidden;
+        }
+
+        .slide-image {
+            /* 要跟 */
+            /* width: 3200px; */
+            left: 0px;
+            transition: var(--transition-time);
+
+            & li {
+                /* width: 800px; */
+                height: 400px;
+                flex: 1 0 0;
+
+                & img {
+                    width: 100%;
+                    height: 100%;
+                    object-fit: cover;
+                }
+            }
+        }
+
+        .pages {
+            bottom: 0.8rem;
+            margin-bottom: 0;
+
+            & li {
+                width: 28px;
+                height: 10px;
+                border: 1px solid #fff;
+                margin-inline: 4px;
+
+                /* 把hover拿掉 */
+                &.current {
+                    background: #fff;
+                }
+            }
+        }
+
+        .slide-btn {
+            /* color: #FFF; */
+            top: 0;
+            bottom: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            width: 40px;
+            opacity: .5;
+
+            &:hover {
+                opacity: 1;
+                background: rgba(0, 0, 0, .5);
+            }
+
+            ;
+
+            &.slide-next {
+                right: 0;
+            }
+
+            cursor: pointer;
+
+            & i {
+                color: #FFF;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <div class="wrapper" id="wrapper">
+        <div class="slider position-relative" id="slider">
+            <ul class="list-unstyled position-absolute slide-image d-flex" id="slideImage">
+                <!-- <li>
+                    <img src="/example/images/slide1.jpeg" alt="">
+                </li>
+                <li>
+                    <img src="/example/images/slide2.jpeg" alt="">
+                </li>
+                <li>
+                    <img src="/example/images/slide3.jpeg" alt="">
+                </li>
+                <li>
+                    <img src="/example/images/slide4.jpeg" alt="">
+                </li> -->
+            </ul>
+            <ul class="list-unstyled pages position-absolute d-flex justify-content-center w-100" id="pages">
+                <!-- <li class="current"></li>
+                <li></li>
+                <li></li>
+                <li></li> -->
+            </ul>
+            <!-- role無障礙友善 -->
+            <a class="slide-btn position-absolute slide-prev" role="button" id="slidePrev" href="javascript:void(0)">
+                <i class="fa-solid fa-chevron-left"></i>
+            </a>
+            <a class="slide-btn position-absolute slide-next" role="button" id="slideNext" href="javascript:void(0)">
+                <i class="fa-solid fa-chevron-right"></i>
+            </a>
+        </div>
+
+        <!-- Optional JavaScript -->
+        <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+        <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
+            integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
+            crossorigin="anonymous"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"
+            integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1"
+            crossorigin="anonymous"></script>
+        <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"
+            integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM"
+            crossorigin="anonymous"></script>
+
+        <script>
+            // 20240301 DOM用JQ去生成
+
+            let sliders = ["slide1.jpeg", "slide2.jpeg", "slide3.jpeg", "slide4.jpeg"]
+
+            // for (let i = 0; i < sliders.length; i++) {
+            //     let slide = `<li>
+            //         <img src="/example/images/${sliders[i]}
+            //         " alt="">
+            //     </li>`;
+            //     console.log(slide);
+            //     $("#slideImage").append(slide);
+            //     let page = "<li></li>"
+            //     if (i == 0) page = "<li class='current'></li>"
+            //     $("#pages").append(page)
+            // }
+
+            // 不要跑一次迴圈APPEND，最後一次APPEND
+            //性能會比較好
+            // 
+            let slide = "";
+            let page = "";
+            for (let i = 0; i < sliders.length; i++) {
+                slide += `<li>
+            <img src="/example/images/${sliders[i]}" alt="">
+          </li>`;
+                if (i == 0) {
+                    page += "<li class='current'></li>";
+                } else {
+                    page += "<li></li>";
+                }
+            }
+            $("#slideImage").append(slide);
+            $("#pages").append(page)
+
+
+            // 本來是800
+            let slideWidth = $("#wrapper").width();
+            let slideIndex = 0
+            // slideCount回到第一張或最後一張使用的參數
+            let slideCount = $("#slideImage li").length;
+
+            // $("#pages li").eq(slideIndex).css("background", "#fff")
+            // 多加入的
+
+            $("#slideImage").css("width", slideCount * slideWidth + "px")
+
+
+            $("#pages li").mouseenter(function () {
+                // console.log("mouse enter");
+                slideIndex = $(this).index();
+                // console.log(slideIndex);
+                let slideMove = 0 - (slideWidth * slideIndex) + "px";
+                // console.log(slideMove);
+                // $("#slideImage").css("left", slideMove)
+                // $(this).css("background", "#fff").siblings().css("background", "none")
+
+                $("#slideImage").css("left", slideMove)
+                $(this).css("background", "#fff").siblings().css("background", "none")
+
+
+            })
+
+            $("#slidePrev").click(function () {
+
+                slideIndex--;
+
+                //回到最後一張
+                // if (slideIndex < 0) {
+                //     slideIndex = slideCount - 1
+                // }
+                slideIndex = slideIndex < 0 ? slideCount - 1 : slideIndex;
+
+
+                slideGo();
+            })
+            $("#slideNext").click(function () {
+
+                // slideIndex++;
+
+
+
+                //回到第一張
+                // slideIndex=slideIndex>3? slideCount-4:slideIndex;
+                // if(slideIndex==slideCount){
+                //     slideIndex=0;
+                // }
+
+
+
+                // slideIndex = slideIndex == slideCount ? 0 : slideIndex;
+
+
+
+
+                // slideGo()
+                // console.log(slideIndex);
+                goNextSlide()
+            })
+            function slideGo() {
+                let slideMove = 0 - (slideWidth * slideIndex) + "px";
+                // console.log(slideMove);
+                $("#slideImage").css("left", slideMove)
+                // 讓此按鈕跟分頁有互動
+
+                // 20240227更改這邊
+                $("#pages li").eq(slideIndex).addClass("current").siblings().removeClass()
+            }
+
+
+
+
+            // 讓他自動滑動
+            let autoSlide = setInterval(goNextSlide, 2000)
+
+            function goNextSlide() {
+                slideIndex++;
+                slideIndex = slideIndex == slideCount ? 0 : slideIndex;
+                slideGo();
+            }
+
+            // 進去框框以後暫停他
+
+            $("#slider").hover(function () {
+                clearInterval(autoSlide)
+            }, function () {
+                autoslide = setInterval(goNextSlide, 2000)
+            })
+
+
+
+            // 會跟視窗一樣的大小
+            $(window).resize(function () {
+                slideWidth = $("#wrapper").width();
+                $("#slideImage").css("width", slideCount * slideWidth + "px")
+                slideGo()
+            })
+        </script>
+</body>
+
+</html>
