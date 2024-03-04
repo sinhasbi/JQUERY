@@ -57,8 +57,13 @@
 
         $("#setPic").click(function(){
             //elem.attr
-            $("#target").attr("src","/example/images/02.png")
-            
+
+            let picAttr={
+                "src":"/example/images/02.png",
+                "title":"newPic"
+            }
+            // $("#target").attr("src","/example/images/02.png")
+            $("#target").attr(picAttr)
             
         })
     </script>

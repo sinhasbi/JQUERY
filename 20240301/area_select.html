@@ -133,7 +133,11 @@
             })
             selectedAreas=selectedAreas.areas;
             // console.log(selectedAreas);
+
+
             let areaList=`<option value="0">請選擇鄉鎮市區</option>`;
+
+            
             selectedAreas.forEach(area => {
                 // console.log(area);
                 areaList+=`<option value="${area.id}">${area.name}</option>`;
