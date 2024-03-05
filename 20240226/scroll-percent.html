@@ -47,7 +47,7 @@
             $(window).scroll(function(){
                 let scrollTop=$(this).scrollTop();
                 // console.log(scrollTop);
-                let scrollPercent=(scrollTop/(pageHeight - windowHeight))*100+"%"
+                let scrollPercent=(scrollTop/(pageHeight -windowHeight))*100+"%"
                 // console.log(scrollPercent);
                 $("#progressbar").css("width",scrollPercent)
             })

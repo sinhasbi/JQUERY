@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <title>AREA EXAMPLE</title>
+    <!-- Required meta tags -->
+    <meta charset="utf-8" />
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1, shrink-to-fit=no"
+    />
+
+    <!-- Bootstrap CSS -->
+    <link
+      rel="stylesheet"
+      href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+      integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T"
+      crossorigin="anonymous"
+    />
+  </head>
+  <body>
+    <div class="container">
+      <select name="" id="city">
+        <option value="1">台北市</option>
+        <option value="2">新北市</option>
+        <option value="3">桃園市</option>
+        <option value="4">新北市</option>
+      </select>
+      <select name="" id="area">
+        <option value="">請選擇城市...</option>
+      </select>
+    </div>
+    <!-- Optional JavaScript -->
+    <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+    <script
+      src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
+      integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
+      crossorigin="anonymous"
+    ></script>
+    <script
+      src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"
+      integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1"
+      crossorigin="anonymous"
+    ></script>
+    <script
+      src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"
+      integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM"
+      crossorigin="anonymous"
+    ></script>
+  </body>
+  <script>
+    let city = [
+      {
+        id: 1,
+        name: "台北市",
+        areas: [
+          { id: 11, name: "中正區" },
+          { id: 12, name: "中山區" },
+          { id: 13, name: "大安區" },
+        ],
+      },
+
+      {
+        id: 2,
+        name: "新北市",
+        areas: [
+          { id: 21, name: "板橋區" },
+          { id: 22, name: "永和區" },
+          { id: 23, name: "淡水區" },
+        ],
+      },
+      {
+        id: 3,
+        name: "桃園市",
+        areas: [
+          { id: 31, name: "桃園區" },
+          { id: 32, name: "中壢區" },
+          { id: 33, name: "平鎮區" },
+        ],
+      },
+      {
+        id: 4,
+        name: "台中市",
+        areas: [
+          { id: 41, name: "北屯區" },
+          { id: 42, name: "清水區" },
+          { id: 43, name: "太平區" },
+        ],
+      },
+    ];
+
+    // console.log(city);
+
+    $("#city").change(function () {
+      // console.log("change");
+      let cityId = $(this).val();
+      //   console.log(cityId);
+
+      let selectedCity = city.find((city) => {
+        return city.id == cityId;
+      });
+      // console.log(selectedCity);
+
+      let selectedAreas = selectedCity.areas;
+      console.log(selectedAreas);
+
+      let areaList = `<option value="0">請選擇鄉鎮市區</option>`;
+
+      selectedAreas.forEach((area) => {
+        areaList += `<option value="${area.id}">${area.name}</option>`;
+      });
+
+      $("#area").empty().append(areaList);
+    });
+  </script>
+</html>
