@@ -1,0 +1,57 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+    <title>LIST</title>
+    <!-- Required meta tags -->
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
+
+    <!-- Bootstrap CSS v5.2.1 -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous" />
+</head>
+
+<body>
+    <div class="container">
+        <div id="hacker-list">
+            <div class="row g-3">
+                <div class="col">
+                    <input class="search form-control" />
+                </div>
+                <div class="col-auto">
+                    <button class="sort btn btn-primary" data-sort="name">Sort by name</button>
+                    <button class="sort btn btn-primary" data-sort="city">Sort by city</button>
+                </div>
+            </div>
+            <ul class="list">
+                <li>
+                    <h3 class="name">Jonny</h3>
+                    <p class="city">Stockholm</p>
+                </li>
+                <li>
+                    <h3 class="name">Jonas</h3>
+                    <p class="city">Berlin</p>
+                </li>
+                <li>
+                    <h3 class="name">Kyo</h3>
+                    <p class="city">Tokyo</p>
+                </li>
+                <li>
+                    <h3 class="name">Keyko</h3>
+                    <p class="city">Kyoto</p>
+                </li>
+            </ul>
+        </div>
+    </div>
+    <script src="//cdnjs.cloudflare.com/ajax/libs/list.js/2.3.1/list.min.js"></script>
+    <script>
+        var options = {
+            valueNames: ['name', 'city']
+        };
+
+        var hackerList = new List('hacker-list', options);
+    </script>
+</body>
+
+</html>
